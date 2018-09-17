@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { BitcoinLastDayComponent } from './bitcoin-last-day/bitcoin-last-day.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BitcoinLastDayComponent
   ],
   imports: [
     BrowserModule

@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./graphs.component.css']
 })
 export class GraphsComponent implements OnInit {
+  startDateField;
+  endDateField;
+  data;
 
   constructor(private router: Router) { }
 
@@ -15,5 +18,4 @@ export class GraphsComponent implements OnInit {
       this.router.navigate(['login']);
     }
   }
-
 }

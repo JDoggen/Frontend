@@ -1,3 +1,17 @@
 <div class="container">
+    <div class="Dates">
+        <div id="startDate">
+            <input [matDatepicker]="startDate" (focus)="startDate.open()" [(ngModel)]="chart.startDateField">
+            <mat-datepicker #startDate></mat-datepicker>
+        </div>
+        <div id="endDate">
+            <input [matDatepicker]="endDate" (focus)="endDate.open()" [(ngModel)]="chart.endDateField">
+            <mat-datepicker #endDate></mat-datepicker>
+        </div>
+            <button id="button"  (click)="chart.getData()">Request Data</button>
+        </div>
+        <div id="chartcontainer">
+            <app-chart #chart></app-chart>
+        </div>
   
 </div>

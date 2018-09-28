@@ -11,7 +11,7 @@
       <button id="button" (click)="getData()">Request Data</button>
     </div>
     <div class="data">
-        <table>
+        <table *ngIf="data">
             <tbody id="tablehead">
                 <tr id="trhead">
                 <th id="thleft">Timestamp</th>

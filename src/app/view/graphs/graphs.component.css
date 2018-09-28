@@ -1,0 +1,13 @@
+.Dates{
+    display: block;
+    position: absolute;
+    margin-top:25%;
+    margin-left: 200px;
+}
+
+#chartcontainer{
+    width: 600px;
+    float: left;
+    margin-left: 30%;
+    margin-top: 5%;
+}

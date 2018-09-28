@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BitcoinDailyDto } from '../model/BitcoinDailyDto';
-import { BitcoinDailyService } from './service/BitcoinDaily.service';
+import { BitcoinDailyDto } from 'src/model/BitcoinDailyDto';
+import { BitcoinDailyService } from 'src/service/BitcoinDaily.service';
 
 @Component({
   selector: 'app-bitcoin-last-day',

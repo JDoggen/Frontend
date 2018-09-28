@@ -12,7 +12,7 @@ export class DataComponent implements OnInit {
 
   constructor(private router: Router, private service: DataService) { }
 
-  data : BitcoinDataDto[] = new Array();
+  data : BitcoinDataDto[];
   startDateField;
   endDateField;
 

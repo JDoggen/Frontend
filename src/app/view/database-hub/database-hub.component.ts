@@ -15,5 +15,6 @@ export class DatabaseHubComponent implements OnInit {
       this.router.navigate(['login']);
     }
   }
+  
 
 }

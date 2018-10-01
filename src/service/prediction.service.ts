@@ -10,12 +10,8 @@ const httpOptions = {
 @Injectable()
 export class PredictionService {
 
-    constructor(private http: HttpClient) { }
-    
-    findAll(): Observable<PredictionDto[]>{
-        return this.http.get<PredictionDto[]>('http://localhost:9090/api/bitcoin/prediction/findall');
+    constructor() { 
+        
     }
-    getPrediction(startDate: number, endDate: number): Observable<PredictionDto>{
-        return this.http.post<PredictionDto>('http://localhost:9090/api/bitcoin/createprediction/'+{{startDate}}+'/'+'{{endDate}});
-    }
+   
 }

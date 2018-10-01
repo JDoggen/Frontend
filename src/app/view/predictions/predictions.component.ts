@@ -8,12 +8,10 @@ import { Router } from '@angular/router';
 })
 export class PredictionsComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
-    if(!(sessionStorage.getItem('loggedIn') == 'true')){
-      this.router.navigate(['login']);
-    }
+    
   }
 
 }

@@ -6,8 +6,18 @@
 }
 
 #chartcontainer{
+    width: 1200px;
+    float: left;
+    margin-left: 20%;
+    margin-top: 5%;
+}
+
+.leftCharts{
     width: 600px;
     float: left;
-    margin-left: 30%;
-    margin-top: 5%;
+}
+
+.rightCharts{
+    width: 600px;
+    float: right;
 }

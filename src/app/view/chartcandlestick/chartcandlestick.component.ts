@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart} from 'angular-highcharts';
+import { Chart, Highcharts } from 'angular-highcharts';
 import { DataService } from 'src/service/data.service';
 import { BitcoinDataDto } from 'src/model/BitcoinDataDto';
-import { DataPoint } from 'src/model/DataPoint';
+import { Candlestick } from 'src/model/Candlestick';
 
 @Component({
-  selector: 'app-chart',
+  selector: 'app-chartcandlestick',
   template: `
-    <div [chart]="chart"></div>
+    <div [chart]="chartCandlestick"></div>
   `
   
 })
-export class ChartComponent implements OnInit {
+export class chartCandlestickComponent implements OnInit {
   data: BitcoinDataDto[];
-  parsedData: Array<DataPoint>;
+  parsedDataMinute: Array<Candlestick>;
   startDateField;
   endDateField;
 
 
-  constructor(private service: DataService) { }
+  constructor(private service: DataService) { 
+  }
 
   ngOnInit() {
   }
@@ -30,29 +31,37 @@ export class ChartComponent implements OnInit {
     })
   }
 
-  parseData(){
-    this.parsedData = new Array();
-    this.data.forEach(element => {
-      let dataPoint = new DataPoint();
-      dataPoint.x = new Date(element.timeStamp * 1000);
-      dataPoint.y = element.close;
-      this.parsedData.push(dataPoint);
-       
-      })
-      this.chart.removeSerie(0);
-      this.chart.addSerie({
-        turboThreshold: 0,
-        color: 'rgba(255, 230, 190, 1)',
-        name: 'Bitcoin',
-        data: this.parsedData,
-    });
+  zoom(zoomEvent){
   }
 
-   chart = new Chart({
+  parseData(){
+    this.parsedDataMinute = new Array();
+    this.data.forEach(element => {
+      let candlestick = new Candlestick();
+      candlestick.x = new Date(element.timeStamp * 1000);
+      candlestick.close = element.close;
+      candlestick.high = element.high;
+      candlestick.open = element.open;
+      candlestick.low = element.low;
+      this.parsedDataMinute.push(candlestick);
+       
+      })
+      this.chartCandlestick.removeSerie(0);
+      this.chartCandlestick.addSerie({
+        turboThreshold: 0,
+        type: 'candlestick',
+        name: 'Bitcoin',
+        data: this.parsedDataMinute,
+      })
+  }
+  
+   chartCandlestick = new Chart(
+     {
+    
     chart: {
-      type: 'area',
+      type: 'candlestick',
       zoomType: 'x',
-      backgroundColor: '#cdcdcd'
+      backgroundColor: '#cdcdcd',
     },
     xAxis: {
       type: 'datetime',
@@ -66,6 +75,9 @@ export class ChartComponent implements OnInit {
         day: '%e. %b',
         week: '%e. %b',
         month: '%b \'%y',
+      },
+      events:{
+        setExtremes:()=>this.zoom(event)
       }
     },
     yAxis: {
@@ -73,34 +85,22 @@ export class ChartComponent implements OnInit {
       lineColor: '#000000',
       lineWidth: 1,
       title:{
-        text: 'Close price'
+        text: 'Price USD'
       }
     },
+
+    
     title: {
-      text: 'Bitcoin Price',
+      text: 'Bitcoin Candlestick',
     },
+
     credits: {
       enabled: false
     },
+
     legend: {
       enabled: false
-    },
-    plotOptions: {
-      area: {
-        fillColor: 
-        {
-          linearGradient: {
-            x1: 0,
-            y1: 0,
-            x2: 0,
-            y2: 1,
-            },
-          stops: [
-              [0, 'rgba(234, 148, 23, 0.3)'],
-              [1, 'rgba(234, 148, 23, 0.7)']
-          ]
-        },      
-    }   
-  },
-  });
+    }, 
+    
+  }); 
 }

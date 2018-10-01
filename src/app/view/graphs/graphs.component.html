@@ -1,17 +1,23 @@
 <div class="container">
     <div class="Dates">
         <div id="startDate">
-            <input [matDatepicker]="startDate" (focus)="startDate.open()" [(ngModel)]="chart.startDateField">
+            <input [matDatepicker]="startDate" (focus)="startDate.open()" [(ngModel)]="chartArea.startDateField" [(ngModel)]="chartLine.startDateField" [(ngModel)]="chartCandlestick.startDateField">
             <mat-datepicker #startDate></mat-datepicker>
         </div>
         <div id="endDate">
-            <input [matDatepicker]="endDate" (focus)="endDate.open()" [(ngModel)]="chart.endDateField">
+            <input [matDatepicker]="endDate" (focus)="endDate.open()" [(ngModel)]="chartArea.endDateField" [(ngModel)]="chartLine.endDateField" [(ngModel)]="chartCandlestick.endDateField">
             <mat-datepicker #endDate></mat-datepicker>
         </div>
-            <button id="button"  (click)="chart.getData()">Request Data</button>
+            <button id="button"  (click)="chartArea.getData(); chartLine.getData(); chartCandlestick.getData();">Request Data</button>
         </div>
         <div id="chartcontainer">
-            <app-chart #chart></app-chart>
+            <div class='leftCharts'>
+                <app-chartarea #chartArea></app-chartarea>
+                <app-chartline #chartLine></app-chartline>
+            </div>
+            <div class='rightCharts'>
+            <app-chartcandlestick #chartCandlestick></app-chartcandlestick>
+            </div>
         </div>
   
 </div>

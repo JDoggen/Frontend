@@ -1,17 +1,19 @@
 export class PredictionDto
 {
-    id: number;
-	
+	id: number;
+
 	standardDeviation: number;
-	
-	lastCloseValue: number;
-	
-	predictionFactor: number;
-	
+
+	theFactor: number;
+
 	oneDayPrediction: number;
 
-	//startDate;
+	lastCloseValue: number;
+
+	averageCloseValue: number;
 	
-	//endDate;
+	start: number;
+	
+	end: number;
 
 }

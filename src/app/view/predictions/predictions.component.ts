@@ -15,5 +15,4 @@ export class PredictionsComponent implements OnInit {
       this.router.navigate(['login']);
     }
   }
-
 }

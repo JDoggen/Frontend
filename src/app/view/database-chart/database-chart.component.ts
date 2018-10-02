@@ -18,6 +18,7 @@ export class DatabaseChartComponent implements OnInit {
   databaseEntriesParsed: string;
   scraping: boolean = false;
   firstEntry: string = "";
+  lastEntry: string = "";
   disableuiswitch: boolean = false;
 
   
@@ -27,15 +28,15 @@ export class DatabaseChartComponent implements OnInit {
 
   ngOnInit() {
     this.getCount();
-
     this.isScraping();
-
     this.getFirstEntry();
+    this.getLastEntry();
 
     this.interval = setInterval(() => {
       this.getCount();
       this.isScraping();
       this.getFirstEntry();
+      this.getLastEntry();
       
     }, 1000);
   }
@@ -84,7 +85,14 @@ export class DatabaseChartComponent implements OnInit {
     },
     error => {
     });
-    
+  }
+
+  getLastEntry(){
+    this.service.getLastEntry().subscribe(data =>{
+      this.lastEntry = data;
+    },
+    error => {
+    });
   }
 
   numberWithCommas(x) {

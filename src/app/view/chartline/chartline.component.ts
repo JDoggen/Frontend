@@ -66,6 +66,10 @@ export class ChartLineComponent implements OnInit {
         day: '%e. %b',
         week: '%e. %b',
         month: '%b \'%y',
+      },
+      title: {
+        align: 'middle',
+        text: 'Date / Time'
       }
     },
     yAxis: {

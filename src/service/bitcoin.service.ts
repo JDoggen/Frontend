@@ -36,5 +36,7 @@ export class BitcoinService {
         return this.http.get('http://localhost:9090/api/bitcoin/firstentry', {responseType: 'text'});
     }
 
-
+    getLastEntry(): Observable<string> {
+        return this.http.get('http://localhost:9090/api/bitcoin/lastentry', {responseType: 'text'});
+    }
 }

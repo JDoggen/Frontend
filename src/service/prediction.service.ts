@@ -13,7 +13,7 @@ export class PredictionService {
     constructor(private http: HttpClient) { 
         
     }
-    getPredictions(){
+    getPredictions() : Observable<PredictionDto[]>{
         return this.http.get<PredictionDto[]>('http://localhost:9090/api/bitcoin/prediction/findall')
     }
 

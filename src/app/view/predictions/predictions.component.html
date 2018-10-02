@@ -4,20 +4,24 @@
             <button id="button" (click)="createPrediction()">Create new Prediction</button>
             <table style="widows: 70%">
                     <tr>
-                    <th >Id</th>
-                    <th >Standard Deviation</th>
-                    <th >Last Close Value</th>
-                    <th>Prediction Factor</th>
-                    <th >One Day Prediction</th>
+                        <th>Id</th>
+                        <th>Standard Deviation</th>
+                        <th>Last Close Value</th>
+                        <th>Factor</th>
+                        <th>One Day Prediction</th>
+                        <th>Start</th>
+                        <th>End</th>
                     </tr>
-                <tbody id="tablebody">
-                        <tr *ngFor="let predictionDto of predictions; let i=index; let o= odd; let e=even;" [ngClass]="{ odd: o, even: e }">
-                            <td>{{predictionDto.id}}</td>
-                            <td>{{decimalFormat(predictionDto.standardDeviation)}}</td>
-                            <td>{{decimalFormat(predictionDto.lastCloseValue)}}</td>
-                            <td>{{decimalFormat(predictionDto.predictionFactor)}}</td>
-                            <td>{{decimalFormat(predictionDto.oneDayPrediction)}}</td>
-                        </tr>
+            <tbody id="tablebody">
+                     <tr *ngFor="let predictionDto of predictions; let i=index; let o= odd; let e=even;" [ngClass]="{ odd: o, even: e }">
+                        <td>{{predictionDto.id}}</td>
+                        <td>{{decimalFormat(predictionDto.standardDeviation)}}</td>
+                        <td>{{decimalFormat(predictionDto.lastCloseValue)}}</td>
+                        <td>{{decimalFormat(predictionDto.theFactor)}}</td>
+                        <td>{{decimalFormat(predictionDto.oneDayPrediction)}}</td>
+                        <td>{{decimalFormat(predictionDto.start)}}</td>
+                        <td>{{decimalFormat(predictionDto.end)}}</td>
+                    </tr>
             </table>
         </div>
 </div>

@@ -20,7 +20,8 @@ import * as exporting from 'highcharts/modules/exporting.src';
 
 import { BitcoinService } from '../service/bitcoin.service';
 import { loginService } from '../service/login.service';
-import { DataService } from '../service/data.service'
+import { DataService } from '../service/data.service';
+import { PredictionService } from '../service/prediction.service';
 
 
 import { DatabaseHubComponent } from './view/database-hub/database-hub.component';
@@ -32,7 +33,6 @@ import { PredictionsComponent } from './view/predictions/predictions.component';
 import { ChartAreaComponent } from './view/chartarea/chartarea.component';
 import { ChartLineComponent } from './view/chartline/chartline.component';
 import { chartCandlestickComponent } from './view/chartcandlestick/chartcandlestick.component';
-
 
 
 
@@ -74,6 +74,7 @@ const appRoutes: Routes =[
     BitcoinService,
     loginService,
     DataService,
+    PredictionService,
     { provide: HIGHCHARTS_MODULES, useFactory: highchartsModules }
   ],
   bootstrap: [AppComponent]

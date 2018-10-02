@@ -11,12 +11,16 @@
             <button id="button"  (click)="chartArea.getData(); chartLine.getData(); chartCandlestick.getData();">Request Data</button>
         </div>
         <div id="chartcontainer">
-            <div class='leftCharts'>
-                <app-chartarea #chartArea></app-chartarea>
-                <app-chartline #chartLine></app-chartline>
+            <div class='topCharts'>
+                <app-chartcandlestick #chartCandlestick></app-chartcandlestick>
             </div>
             <div class='rightCharts'>
-            <app-chartcandlestick #chartCandlestick></app-chartcandlestick>
+                <div class = 'left'>
+                    <app-chartarea #chartArea></app-chartarea>
+                </div>
+                <div class = 'left'>
+                    <app-chartline #chartLine></app-chartline>
+                </div>
             </div>
         </div>
   

@@ -12,12 +12,20 @@
     margin-top: 5%;
 }
 
-.leftCharts{
-    width: 600px;
+.topCharts{
+    width: 1200px;
     float: left;
 }
 
-.rightCharts{
-    width: 600px;
+.bottomCharts{
+    width: 1200px;
+    float: left;
+}
+
+.left{
+    float: left;
+}
+
+.right{
     float: right;
 }

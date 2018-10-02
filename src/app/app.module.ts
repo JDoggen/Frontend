@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 
 
@@ -33,16 +33,12 @@ import { ChartAreaComponent } from './view/chartarea/chartarea.component';
 import { ChartLineComponent } from './view/chartline/chartline.component';
 import { chartCandlestickComponent } from './view/chartcandlestick/chartcandlestick.component';
 
-
-
-
 const appRoutes: Routes =[
   {path: '', component: DatabaseHubComponent},
   {path: 'login', component: LoginComponent},
   {path: 'graphs', component: GraphsComponent},
   {path: 'data', component: DataComponent},
   {path: 'predictions', component: PredictionsComponent}
-  
 ];
 
 

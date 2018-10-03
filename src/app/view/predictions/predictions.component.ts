@@ -14,9 +14,9 @@ export class PredictionsComponent implements OnInit {
   constructor(private router: Router, private service: PredictionService) { }
 
   predictions : PredictionDto[];
-  
-  
+  buttonDisabled = true;
   prediction : PredictionDto;
+
   start;
   end;
 
@@ -31,6 +31,7 @@ export class PredictionsComponent implements OnInit {
       data =>{ this.predictions = data; 
     })
   } 
+  
   createPrediction(){
     //let start = this.dateToUnix(this.start);
     //let end = this.dateToUnix(this.end);
@@ -45,6 +46,10 @@ export class PredictionsComponent implements OnInit {
       return "-";
     }
     return data.toFixed(2);
+  }
+
+  dateChange(){
+    this.buttonDisabled = (this.start == null || this.end == null);
   }
   unixToDate(unix: number): Date{
     return new Date(unix * 1000);

@@ -173,17 +173,16 @@ export class chartCandlestickComponent implements OnInit {
       turboThreshold: 0,
       type: 'candlestick',
       name: 'Bitcoin',
-      data: this.parsedDataDay
+      data: this.parsedDataDay,
     });
   }
   
    chartCandlestick = new Chart(
      {
-    
     chart: {
       type: 'candlestick',
       zoomType: 'x',
-      backgroundColor: '#cdcdcd',
+      backgroundColor: '#cdcdcd'
     },
     xAxis: {
       title: {
@@ -206,6 +205,7 @@ export class chartCandlestickComponent implements OnInit {
         setExtremes:(event)=>this.zoom(event)
       }
     },
+
     yAxis: {
       min: null,
       lineColor: '#000000',
@@ -226,7 +226,7 @@ export class chartCandlestickComponent implements OnInit {
 
     legend: {
       enabled: false
-    }, 
+    }
     
   }); 
 }

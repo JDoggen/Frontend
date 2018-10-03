@@ -1,24 +1,26 @@
 <div class="container">
-        <div>
-            <button id="button" (click)="getPredictions()">Show existing Prediction</button>
-            <div id="startDate">
-                        <input [matDatepicker]="startDate" (focus)="startDate.open()" [(ngModel)]="start">
+        <div class="buttons">
+                <button class="button" mat-button (click)="getPredictions()">Show existing Prediction</button>
+                <button class="button" mat-button (click)="createPrediction()" disabled={{buttonDisabled}}>Create new Prediction</button>
+                <div id="startDate">
+                        <input [matDatepicker]="startDate" (focus)="startDate.open()" [(ngModel)]="start" (ngModelChange)="dateChange()">
                         <mat-datepicker #startDate></mat-datepicker>
-            </div>
-            <div id="endDate">
-                    <input [matDatepicker]="endDate" (focus)="endDate.open()" [(ngModel)]="end">
-                    <mat-datepicker #endDate></mat-datepicker>
-            </div>
-            <button id="button" (click)="createPrediction()">Create new Prediction</button>
+                </div>
+                <div id="endDate">
+                        <input [matDatepicker]="endDate" (focus)="endDate.open()" [(ngModel)]="end" (ngModelChange)="dateChange()">
+                        <mat-datepicker #endDate></mat-datepicker>
+                </div>
+        </div>
+        <div class="data">
             <table style="widows: 70%">
-                    <tr>
-                        <th>Id</th>
+                <tr id="tablehead">
+                        <th id="thleft">Id</th>
                         <th>Standard Deviation</th>
                         <th>Last Close Value</th>
                         <th>Factor</th>
                         <th>One Day Prediction</th>
                         <th>Start</th>
-                        <th>End</th>
+                        <th id="thright">End</th>
                     </tr>
             <tbody id="tablebody">
                      <tr *ngFor="let predictionDto of predictions; let i=index; let o= odd; let e=even;" [ngClass]="{ odd: o, even: e }">

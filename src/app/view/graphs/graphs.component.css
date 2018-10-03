@@ -29,3 +29,13 @@
 .right{
     float: right;
 }
+
+button{
+    display: block;
+    background-color: #eeb058;
+    width: 175px;
+}
+
+input{
+    width: 175px;;
+}

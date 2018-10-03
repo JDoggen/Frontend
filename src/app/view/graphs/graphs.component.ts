@@ -10,6 +10,7 @@ export class GraphsComponent implements OnInit {
   startDateField;
   endDateField;
   data;
+  buttonDisabled = true;
 
   constructor(private router: Router) { }
 
@@ -17,5 +18,9 @@ export class GraphsComponent implements OnInit {
     if(!(sessionStorage.getItem('loggedIn') == 'true')){
       this.router.navigate(['login']);
     }
+  }
+
+  dateChange(){
+    this.buttonDisabled = (this.startDateField == null || this.endDateField == null);
   }
 }

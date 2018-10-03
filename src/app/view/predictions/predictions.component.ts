@@ -14,6 +14,9 @@ export class PredictionsComponent implements OnInit {
   constructor(private router: Router, private service: PredictionService) { }
 
   predictions : PredictionDto[];
+  
+  
+  prediction : PredictionDto;
   start;
   end;
 
@@ -28,10 +31,28 @@ export class PredictionsComponent implements OnInit {
       data =>{ this.predictions = data; 
     })
   } 
+  createPrediction(){
+    //let start = this.dateToUnix(this.start);
+    //let end = this.dateToUnix(this.end);
+    this.service.createPrediction(this.dateToUnix(this.start), this.dateToUnix(this.end)).subscribe(
+      data =>{ this.prediction = data; 
+      this.getPredictions();
+    })
+  }
+
   decimalFormat(data : number) : string{
     if(data==null){
       return "-";
     }
     return data.toFixed(2);
   }
+  unixToDate(unix: number): Date{
+    return new Date(unix * 1000);
+  }
+
+  dateToUnix(date: Date): number{
+    return date.getTime() / 1000;
+  }
+
+
 }

@@ -14,6 +14,7 @@ export class PredictionsComponent implements OnInit {
   constructor(private router: Router, private service: PredictionService) { }
 
   predictions : PredictionDto[];
+  buttonDisabled = true;
   start;
   end;
 
@@ -28,10 +29,15 @@ export class PredictionsComponent implements OnInit {
       data =>{ this.predictions = data; 
     })
   } 
+
   decimalFormat(data : number) : string{
     if(data==null){
       return "-";
     }
     return data.toFixed(2);
+  }
+
+  dateChange(){
+    this.buttonDisabled = (this.start == null || this.end == null);
   }
 }

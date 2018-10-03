@@ -1,4 +1,4 @@
-.Dates{
+.dates{
     display: block;
     position: absolute;
     margin-top:25%;
@@ -10,12 +10,6 @@ table{
     border-radius: 25px;
     border-collapse: collapse;
     padding-right: 15px;
-}
-
-.button{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .data{
@@ -61,5 +55,15 @@ td{
 
 .even{
     background-color: #ececec;
+}
+
+button{
+    display: block;
+    background-color: #eeb058;
+    width: 175px;
+}
+
+input{
+    width: 175px;;
 }
 

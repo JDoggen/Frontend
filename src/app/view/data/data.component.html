@@ -1,14 +1,14 @@
 <div class="container">
-    <div class="Dates">
+    <div class="dates">
       <div id="startDate">
-          <input [matDatepicker]="startDate" (focus)="startDate.open()" [(ngModel)]="startDateField">
+          <input [matDatepicker]="startDate" (focus)="startDate.open()" [(ngModel)]="startDateField" (ngModelChange)="dateChange()">
           <mat-datepicker #startDate></mat-datepicker>
       </div>
       <div id="endDate">
-          <input [matDatepicker]="endDate" (focus)="endDate.open()" [(ngModel)]="endDateField">
+          <input [matDatepicker]="endDate" (focus)="endDate.open()" [(ngModel)]="endDateField" (ngModelChange)="dateChange()">
           <mat-datepicker #endDate></mat-datepicker>
       </div>
-      <button id="button" (click)="getData()">Request Data</button>
+      <button mat-button id="button" disabled={{buttonDisabled}} (click)="getData()">Request Data</button>
     </div>
     <div class="data">
         <table *ngIf="data">

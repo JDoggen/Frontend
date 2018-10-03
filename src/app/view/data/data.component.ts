@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BitcoinDataDto } from 'src/model/BitcoinDataDto'
-import { DataService } from 'src/service/data.service'
+import { BitcoinDataDto } from 'src/model/BitcoinDataDto';
+import { DataService } from 'src/service/data.service';
 
 @Component({
   selector: 'app-data',
@@ -15,6 +15,7 @@ export class DataComponent implements OnInit {
   data : BitcoinDataDto[];
   startDateField;
   endDateField;
+  buttonDisabled = true;
 
   ngOnInit() {
     if(!(sessionStorage.getItem('loggedIn') == 'true')){
@@ -31,8 +32,13 @@ export class DataComponent implements OnInit {
   decimalFormat(data : number) : string{
     return data.toFixed(2);
   }
+
   unixToDate(unix: number): Date{
     return new Date(unix * 1000);
+  }
+
+  dateChange(){
+    this.buttonDisabled = (this.startDateField == null || this.endDateField == null);
   }
 
 }

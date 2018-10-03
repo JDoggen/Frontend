@@ -1,6 +1,14 @@
 <div class="container">
         <div>
             <button id="button" (click)="getPredictions()">Show existing Prediction</button>
+            <div id="startDate">
+                        <input [matDatepicker]="startDate" (focus)="startDate.open()" [(ngModel)]="start">
+                        <mat-datepicker #startDate></mat-datepicker>
+            </div>
+            <div id="endDate">
+                    <input [matDatepicker]="endDate" (focus)="endDate.open()" [(ngModel)]="end">
+                    <mat-datepicker #endDate></mat-datepicker>
+            </div>
             <button id="button" (click)="createPrediction()">Create new Prediction</button>
             <table style="widows: 70%">
                     <tr>
@@ -17,10 +25,10 @@
                         <td>{{predictionDto.id}}</td>
                         <td>{{decimalFormat(predictionDto.standardDeviation)}}</td>
                         <td>{{decimalFormat(predictionDto.lastCloseValue)}}</td>
-                        <td>{{decimalFormat(predictionDto.theFactor)}}</td>
+                        <td>{{predictionDto.theFactor}}</td>
                         <td>{{decimalFormat(predictionDto.oneDayPrediction)}}</td>
-                        <td>{{decimalFormat(predictionDto.start)}}</td>
-                        <td>{{decimalFormat(predictionDto.end)}}</td>
+                        <td>{{unixToDate(predictionDto.start)| date: 'yyyy/MM/dd hh:mm'}}</td>
+                        <td>{{unixToDate(predictionDto.end)| date: 'yyyy/MM/dd hh:mm'}}</td>
                     </tr>
             </table>
         </div>

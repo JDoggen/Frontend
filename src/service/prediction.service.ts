@@ -17,10 +17,10 @@ export class PredictionService {
         return this.http.get<PredictionDto[]>('http://localhost:9090/api/bitcoin/prediction/findall')
     }
 
-    createPredictions(start: number, end: number): Observable<PredictionDto> {
+    createPrediction(start: number, end: number): Observable<PredictionDto> {
         let dto = new PredictionDto();
         dto.start = start;
         dto.end = end;
-        return this.http.post<PredictionDto>('http://localhost:9090/api/bitcoin/createprediction/', dto)
+        return this.http.post<PredictionDto>('http://localhost:9090/api/bitcoin/createprediction', dto)
     }
 }

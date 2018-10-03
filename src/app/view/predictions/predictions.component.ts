@@ -15,6 +15,8 @@ export class PredictionsComponent implements OnInit {
 
   predictions : PredictionDto[];
   buttonDisabled = true;
+  prediction : PredictionDto;
+
   start;
   end;
 
@@ -29,6 +31,15 @@ export class PredictionsComponent implements OnInit {
       data =>{ this.predictions = data; 
     })
   } 
+  
+  createPrediction(){
+    //let start = this.dateToUnix(this.start);
+    //let end = this.dateToUnix(this.end);
+    this.service.createPrediction(this.dateToUnix(this.start), this.dateToUnix(this.end)).subscribe(
+      data =>{ this.prediction = data; 
+      this.getPredictions();
+    })
+  }
 
   decimalFormat(data : number) : string{
     if(data==null){
@@ -40,4 +51,13 @@ export class PredictionsComponent implements OnInit {
   dateChange(){
     this.buttonDisabled = (this.start == null || this.end == null);
   }
+  unixToDate(unix: number): Date{
+    return new Date(unix * 1000);
+  }
+
+  dateToUnix(date: Date): number{
+    return date.getTime() / 1000;
+  }
+
+
 }

@@ -48,11 +48,13 @@
 
 #connected{
     color: #2c6f32;
-    padding-top: 5%;
+    padding-top: 7.5%;
+    padding-right: 4px;
 }
 #disconnected{
     color: #8f1818;
-    padding-top: 5%;
+    padding-top: 7.5%;
+    padding-right: 4px;
 }
 
 

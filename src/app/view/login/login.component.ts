@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
       data => {
         if(data){
           sessionStorage.setItem('loggedIn', 'true');
+          sessionStorage.setItem('user', userDto.userName);
           this.router.navigate(['']);
         } else {
           alert("Invalid username and/or password");

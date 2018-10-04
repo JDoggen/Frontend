@@ -8,11 +8,11 @@
             <input [matDatepicker]="endDate" (focus)="endDate.open()" [(ngModel)]="chartArea.endDateField" [(ngModel)]="chartLine.endDateField" [(ngModel)]="chartCandlestick.endDateField" [(ngModel)]="endDateField" (ngModelChange)="dateChange()">
             <mat-datepicker #endDate></mat-datepicker>
         </div>
-            <button mat-button id="button" disabled={{buttonDisabled}} (click)="chartArea.getData(); chartLine.getData(); chartCandlestick.getData();">Request Data</button>
+            <button mat-button id="button" disabled={{buttonDisabled}} (click)="chartArea.getData(); chartLine.getData(); chartCandlestick.getData(); getData;">Request Data</button>
         </div>
         <div id="chartcontainer">
             <div class='topCharts'>
-                <app-chartcandlestick #chartCandlestick></app-chartcandlestick>
+                <app-chartcandlestick #chartCandlestick ></app-chartcandlestick>
             </div>
             <div class='rightCharts'>
                 <div class = 'left'>

@@ -55,7 +55,10 @@
     padding-top: 5%;
 }
 
-ui-switch{
-    color: #b36a14;
+
+#HSS-switch{
+    position: fixed;
+    top: 0;
+    right: 0;
 }
 

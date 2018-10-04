@@ -68,3 +68,11 @@ input{
 #endDate{
     float:right;
 }
+
+.odd{
+    background-color: #cfcfcf;
+}
+
+.even{
+    background-color: #ececec;
+}

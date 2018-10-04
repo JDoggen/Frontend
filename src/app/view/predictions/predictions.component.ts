@@ -29,6 +29,7 @@ export class PredictionsComponent implements OnInit {
   getPredictions(){
     this.service.getPredictions().subscribe(
       data =>{ this.predictions = data; 
+        console.log(data);
     })
   } 
   
@@ -36,7 +37,7 @@ export class PredictionsComponent implements OnInit {
     //let start = this.dateToUnix(this.start);
     //let end = this.dateToUnix(this.end);
     this.service.createPrediction(this.dateToUnix(this.start), this.dateToUnix(this.end)).subscribe(
-      data =>{ this.prediction = data; 
+      data =>{ this.predictions = data.predictions; 
       this.getPredictions();
     })
   }

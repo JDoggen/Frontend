@@ -16,6 +16,7 @@ export class ChartLineComponent implements OnInit {
   parsedData: Array<DataPoint>;
   startDateField;
   endDateField;
+  chartLine : Chart;
 
 
   constructor(private service: DataService) { }
@@ -26,7 +27,8 @@ export class ChartLineComponent implements OnInit {
   getData(){
     this.service.getData(this.startDateField, this.endDateField).subscribe(
       data =>{ this.data = data;
-      this.parseData();
+        this.createChart();
+        this.parseData();
     })
   }
 
@@ -48,50 +50,52 @@ export class ChartLineComponent implements OnInit {
     });
   }
 
-   chartLine = new Chart({
-    chart: {
-      type: 'line',
-      zoomType: 'x',
-      backgroundColor: '#cdcdcd'
-    },
-    xAxis: {
-      type: 'datetime',
-      lineColor: '#000000',
-      lineWidth: 1,
-      dateTimeLabelFormats: {
-        millisecond: '%H:%M:%S.%L',
-        second: '%H:%M:%S',
-        minute: '%H:%M',
-        hour: '%H:%M',
-        day: '%e. %b',
-        week: '%e. %b',
-        month: '%b \'%y',
+   createChart(){
+     this.chartLine = new Chart({
+      chart: {
+        type: 'line',
+        zoomType: 'x',
+        backgroundColor: '#cdcdcd'
+      },
+      xAxis: {
+        type: 'datetime',
+        lineColor: '#000000',
+        lineWidth: 1,
+        dateTimeLabelFormats: {
+          millisecond: '%H:%M:%S.%L',
+          second: '%H:%M:%S',
+          minute: '%H:%M',
+          hour: '%H:%M',
+          day: '%e. %b',
+          week: '%e. %b',
+          month: '%b \'%y',
+        },
+        title: {
+          align: 'middle',
+          text: 'Date / Time'
+        }
+      },
+      yAxis: {
+        min: null,
+        lineColor: '#000000',
+        lineWidth: 1,
+        title:{
+          text: 'Close price'
+        }
       },
       title: {
-        align: 'middle',
-        text: 'Date / Time'
-      }
-    },
-    yAxis: {
-      min: null,
-      lineColor: '#000000',
-      lineWidth: 1,
-      title:{
-        text: 'Close price'
-      }
-    },
-    title: {
-      text: 'Bitcoin Price',
-    },
-    credits: {
-      enabled: false
-    },
-    legend: {
-      enabled: false
-    },
-
-  }
-  );
+        text: 'Bitcoin Price',
+      },
+      credits: {
+        enabled: false
+      },
+      legend: {
+        enabled: false
+      },
+  
+    }
+    );
+   }
 
   
 }

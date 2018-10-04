@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { PredictionDto } from '../model/PredictionDto';
+import { UserDto } from '../model/UserDto';
 
 const httpOptions = {
     headers: new HttpHeaders({' Content-Type': ' application/json'})
@@ -14,13 +15,21 @@ export class PredictionService {
         
     }
     getPredictions() : Observable<PredictionDto[]>{
-        return this.http.get<PredictionDto[]>('http://localhost:9090/api/bitcoin/prediction/findall')
+        let dto = new UserDto();
+        dto.userName = sessionStorage.getItem('user');
+        console.log(sessionStorage.getItem('user'))
+        return this.http.post<PredictionDto[]>('http://localhost:9090/api/bitcoin/prediction', dto);
     }
 
-    createPrediction(start: number, end: number): Observable<PredictionDto> {
-        let dto = new PredictionDto();
-        dto.start = start;
-        dto.end = end;
-        return this.http.post<PredictionDto>('http://localhost:9090/api/bitcoin/createprediction', dto)
+    createPrediction(start: number, end: number): Observable<UserDto> {
+        let userDto = new UserDto();
+        let predictionDto = new PredictionDto();
+        predictionDto.start = start;
+        predictionDto.end = end;
+        userDto.userName = sessionStorage.getItem('user');
+        userDto.predictions = new Array();
+        userDto.predictions.push(predictionDto);
+        console.log(userDto);
+        return this.http.post<UserDto>('http://localhost:9090/api/bitcoin/createprediction/', userDto);
     }
 }

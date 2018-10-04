@@ -23,4 +23,8 @@ export class GraphsComponent implements OnInit {
   dateChange(){
     this.buttonDisabled = (this.startDateField == null || this.endDateField == null);
   }
+
+  getData(){
+    this.data = true;
+  }
 }

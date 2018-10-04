@@ -19,6 +19,7 @@ export class chartCandlestickComponent implements OnInit {
   parsedDataWeek: Array<Candlestick>;
   startDateField;
   endDateField;
+  chartCandlestick : Chart;
 
 
   constructor(private service: DataService) { 
@@ -30,7 +31,9 @@ export class chartCandlestickComponent implements OnInit {
   getData(){
     this.service.getData(this.startDateField, this.endDateField).subscribe(
       data =>{ this.data = data;
+      this.createChart();
       this.parseData();
+
     })
   }
 
@@ -177,56 +180,59 @@ export class chartCandlestickComponent implements OnInit {
     });
   }
   
-   chartCandlestick = new Chart(
-     {
-    chart: {
-      type: 'candlestick',
-      zoomType: 'x',
-      backgroundColor: '#cdcdcd'
-    },
-    xAxis: {
-      title: {
-        align: 'middle',
-        text: 'Date / Time'
-      },
-      type: 'datetime',
-      lineColor: '#000000',
-      lineWidth: 1,
-      dateTimeLabelFormats: {
-        millisecond: '%H:%M:%S.%L',
-        second: '%H:%M:%S',
-        minute: '%H:%M',
-        hour: '%H:%M',
-        day: '%e. %b',
-        week: '%e. %b',
-        month: '%b \'%y',
-      },
-      events:{
-        setExtremes:(event)=>this.zoom(event)
-      }
-    },
-
-    yAxis: {
-      min: null,
-      lineColor: '#000000',
-      lineWidth: 1,
-      title:{
-        text: 'Price USD'
-      }
-    },
-
+  createChart(){
+    this.chartCandlestick = new Chart(
+      {
+     chart: {
+       type: 'candlestick',
+       zoomType: 'x',
+       backgroundColor: '#cdcdcd'
+     },
+     xAxis: {
+       title: {
+         align: 'middle',
+         text: 'Date / Time'
+       },
+       type: 'datetime',
+       lineColor: '#000000',
+       lineWidth: 1,
+       dateTimeLabelFormats: {
+         millisecond: '%H:%M:%S.%L',
+         second: '%H:%M:%S',
+         minute: '%H:%M',
+         hour: '%H:%M',
+         day: '%e. %b',
+         week: '%e. %b',
+         month: '%b \'%y',
+       },
+       events:{
+         setExtremes:(event)=>this.zoom(event)
+       }
+     },
+ 
+     yAxis: {
+       min: null,
+       lineColor: '#000000',
+       lineWidth: 1,
+       title:{
+         text: 'Price USD'
+       }
+     },
+ 
+     
+     title: {
+       text: 'Bitcoin Candlestick',
+     },
+ 
+     credits: {
+       enabled: false
+     },
+ 
+     legend: {
+       enabled: false
+     }
+    }); 
+  }
     
-    title: {
-      text: 'Bitcoin Candlestick',
-    },
 
-    credits: {
-      enabled: false
-    },
-
-    legend: {
-      enabled: false
-    }
-    
-  }); 
 }

@@ -17,7 +17,7 @@ export class PredictionService {
     getPredictions() : Observable<PredictionDto[]>{
         let dto = new UserDto();
         dto.userName = sessionStorage.getItem('user');
-        console.log(sessionStorage.getItem('user'))
+        console.log(dto);
         return this.http.post<PredictionDto[]>('http://localhost:9090/api/bitcoin/prediction', dto);
     }
 
@@ -29,7 +29,6 @@ export class PredictionService {
         userDto.userName = sessionStorage.getItem('user');
         userDto.predictions = new Array();
         userDto.predictions.push(predictionDto);
-        console.log(userDto);
         return this.http.post<UserDto>('http://localhost:9090/api/bitcoin/createprediction/', userDto);
     }
 }
